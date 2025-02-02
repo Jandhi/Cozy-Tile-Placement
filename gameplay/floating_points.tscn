@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://deovpb0wbfgxf"]
+
+[ext_resource type="Script" path="res://FloatingPoints.gd" id="1_42bv7"]
+
+[node name="FloatingPoints" type="Node2D"]
+z_index = 1
+script = ExtResource("1_42bv7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -107.0
+offset_top = -36.0
+offset_right = 89.0
+offset_bottom = 52.0
+bbcode_enabled = true
+text = "[font_size=50
+][center]+10"

@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://brnrru1pp0i73"]
+
+[ext_resource type="Texture2D" uid="uid://brc0xk4p56hb1" path="res://foundation_tiles/greenlands/1-greenlands_vulcano.png" id="1_cmv5s"]
+[ext_resource type="Script" path="res://gameplay/tile.gd" id="1_f2ahv"]
+[ext_resource type="PackedScene" uid="uid://d3if6tclmjvri" path="res://gameplay/party_particles.tscn" id="2_wgo05"]
+[ext_resource type="PackedScene" uid="uid://deovpb0wbfgxf" path="res://gameplay/floating_points.tscn" id="3_fvd86"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_f2ahv")
+party_particles = ExtResource("2_wgo05")
+floating_points = ExtResource("3_fvd86")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cmv5s")

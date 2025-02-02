@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2lpbh8m0g3w"]
+
+[ext_resource type="Script" path="res://gameplay/game_over.gd" id="1_eiots"]
+[ext_resource type="AudioStream" uid="uid://c4yp3pmcj435v" path="res://sfx/GameOver.mp3" id="2_eoxux"]
+
+[sub_resource type="Theme" id="Theme_bale1"]
+default_font_size = 40
+
+[node name="Control" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = -248.0
+offset_right = 263.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eiots")
+
+[node name="Score" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -405.0
+offset_top = -90.0
+offset_right = 406.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=40][center]Game Over
+You got [color=yellow]100[/color] points"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = 64.0
+offset_right = 131.0
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_bale1")
+text = "Try again?"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_eoxux")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="on_try_again"]

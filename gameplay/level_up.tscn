@@ -1,0 +1,153 @@
+[gd_scene load_steps=4 format=3 uid="uid://ea8kon0sb3xi"]
+
+[ext_resource type="Script" path="res://gameplay/LevelUp.gd" id="1_kdgi6"]
+[ext_resource type="Texture2D" uid="uid://c3oduu7f2yrgn" path="res://foundation_tiles/greenlands/2-greenlands_forest.png" id="2_ab4pi"]
+[ext_resource type="AudioStream" uid="uid://tljft47xr663" path="res://sfx/triumph.mp3" id="3_ljo0h"]
+
+[node name="LevelUp" type="Panel" node_paths=PackedStringArray("texture1", "texture2", "texture3", "text1", "text2", "text3")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 124.0
+offset_top = 88.0
+offset_right = -602.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.992192)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_kdgi6")
+texture1 = NodePath("HBoxContainer/Panel/TextureRect")
+texture2 = NodePath("HBoxContainer/Panel2/TextureRect")
+texture3 = NodePath("HBoxContainer/Panel3/TextureRect")
+text1 = NodePath("HBoxContainer/Panel/RichTextLabel")
+text2 = NodePath("HBoxContainer/Panel2/RichTextLabel")
+text3 = NodePath("HBoxContainer/Panel3/RichTextLabel")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Panel" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 100.0
+offset_right = 119.0
+offset_bottom = 307.0
+grow_horizontal = 2
+texture = ExtResource("2_ab4pi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.5
+offset_top = 59.5
+offset_right = 141.5
+offset_bottom = 237.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center]Test"
+
+[node name="Panel2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 100.0
+offset_right = 119.0
+offset_bottom = 307.0
+grow_horizontal = 2
+texture = ExtResource("2_ab4pi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.5
+offset_top = 59.5
+offset_right = 141.5
+offset_bottom = 237.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center]Test"
+
+[node name="Panel3" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 100.0
+offset_right = 119.0
+offset_bottom = 307.0
+grow_horizontal = 2
+texture = ExtResource("2_ab4pi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.5
+offset_top = 59.5
+offset_right = 141.5
+offset_bottom = 237.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center]Test"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 70.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center][font_size=40]Choose a pack of tiles!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ljo0h")
+autoplay = true
+
+[connection signal="button_down" from="HBoxContainer/Panel" to="." method="on_select" binds= [0]]
+[connection signal="button_down" from="HBoxContainer/Panel2" to="." method="on_select" binds= [1]]
+[connection signal="button_down" from="HBoxContainer/Panel3" to="." method="on_select" binds= [2]]
