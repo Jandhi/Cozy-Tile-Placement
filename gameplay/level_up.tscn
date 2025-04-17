@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ea8kon0sb3xi"]
 
-[ext_resource type="Script" path="res://gameplay/LevelUp.gd" id="1_kdgi6"]
+[ext_resource type="Script" uid="uid://dy34elvehqj8a" path="res://gameplay/level_up.gd" id="1_kdgi6"]
 [ext_resource type="Texture2D" uid="uid://c3oduu7f2yrgn" path="res://foundation_tiles/greenlands/2-greenlands_forest.png" id="2_ab4pi"]
 [ext_resource type="AudioStream" uid="uid://tljft47xr663" path="res://sfx/triumph.mp3" id="3_ljo0h"]
 

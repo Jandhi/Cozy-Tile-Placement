@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcejjeouuqku1"]
+
+[ext_resource type="PackedScene" uid="uid://fdl4fo1ungf6" path="res://gameplay/ui/deck_display.tscn" id="1_wvw17"]
+
+[node name="DeckDisplay" instance=ExtResource("1_wvw17")]
+self_modulate = Color(0.157274, 0.157274, 0.157274, 1)
+text_color = "white"
+
+[node name="Number" parent="." index="0"]
+text = "[center][color=white][b]32"
+
+[node name="Deck" parent="." index="1"]
+text = "[center][color=white][b]Discard"

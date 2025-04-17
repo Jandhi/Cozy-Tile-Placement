@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardInfo" load_steps=4 format=3 uid="uid://bok003jiyo2fc"]
+
+[ext_resource type="Script" uid="uid://xdrg0tashm4x" path="res://gameplay/cards/card_info.gd" id="1_54wv4"]
+[ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="2_8r2kq"]
+
+[sub_resource type="Resource" id="Resource_7mlcn"]
+script = ExtResource("2_8r2kq")
+tile_name = ""
+tile_description = ""
+tile_type = 0
+tile_color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://c6xhn0d50s36v"
+
+[resource]
+script = ExtResource("1_54wv4")
+tile_info = SubResource("Resource_7mlcn")

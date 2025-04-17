@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://hmnlqvp4swsg"]
+[gd_scene load_steps=26 format=3 uid="uid://hmnlqvp4swsg"]
 
-[ext_resource type="Script" path="res://gameplay/grid.gd" id="1_lep0a"]
+[ext_resource type="Script" uid="uid://c6l788lq58mb6" path="res://gameplay/grid.gd" id="1_lep0a"]
 [ext_resource type="PackedScene" uid="uid://brnrru1pp0i73" path="res://gameplay/tile.tscn" id="2_3vn84"]
 [ext_resource type="AudioStream" uid="uid://bwhwxv7exla81" path="res://zapsplat_pack_pickaxe_sounds_mp3/zapsplat_industrial_pick_axe_single_hit_soil_mud_ground_001_103436.mp3" id="3_e61sk"]
 [ext_resource type="Texture2D" uid="uid://3apht8els1ga" path="res://foundation_tiles/deadlands/1-deadlands_vulcano.png" id="3_oyow1"]
@@ -23,6 +23,8 @@
 [ext_resource type="AudioStream" uid="uid://duajaex6rjm68" path="res://sfx/Bird's Eye.mp3" id="20_24djp"]
 [ext_resource type="Texture2D" uid="uid://f3iybbt3hia5" path="res://pixel.png" id="20_841g7"]
 [ext_resource type="PackedScene" uid="uid://ea8kon0sb3xi" path="res://gameplay/level_up.tscn" id="21_wcvm4"]
+[ext_resource type="PackedScene" uid="uid://fdl4fo1ungf6" path="res://gameplay/ui/deck_display.tscn" id="24_kwui8"]
+[ext_resource type="PackedScene" uid="uid://dcejjeouuqku1" path="res://gameplay/ui/discard_display.tscn" id="25_fw84r"]
 
 [node name="Node2D" type="Control"]
 layout_mode = 3
@@ -39,18 +41,18 @@ width = 360
 height = 100
 position_debug = NodePath("IndexDebug")
 tile_prototype = ExtResource("2_3vn84")
-deck_count = NodePath("../Control/Deck/Deck Count")
-score_label = NodePath("../Control/Score")
-tile_name = NodePath("../Control/Panel/Title")
-tile_image = NodePath("../Control/Panel/TextureRect")
-tile_description = NodePath("../Control/Panel/Description")
-tile_bonus_label = NodePath("../Control/Panel/Current Bonus")
+deck_count = NodePath("../UI/Deck/Deck Count")
+score_label = NodePath("../UI/Score")
+tile_name = NodePath("../UI/Panel/Title")
+tile_image = NodePath("../UI/Panel/TextureRect")
+tile_description = NodePath("../UI/Panel/Description")
+tile_bonus_label = NodePath("../UI/Panel/Current Bonus")
 build_sound = NodePath("BuildSound")
 build_sounds = Array[AudioStream]([ExtResource("3_e61sk"), ExtResource("4_hvvyy"), ExtResource("5_1gcpl"), ExtResource("6_jk4ga"), ExtResource("7_ibj1e"), ExtResource("8_bd47m"), ExtResource("9_kaqem"), ExtResource("10_pqbxs"), ExtResource("11_pqd7y"), ExtResource("12_hnnke"), ExtResource("3_s3m0l"), ExtResource("14_m52it")])
 combo_sound = NodePath("ComboSound")
 tic_sound = NodePath("Tic")
-progress_bar = NodePath("../Control/Score/Progress")
-points_until_threshold_label = NodePath("../Control/Score/RichTextLabel")
+progress_bar = NodePath("../UI/Score/Progress")
+points_until_threshold_label = NodePath("../UI/Score/RichTextLabel")
 level_up = ExtResource("21_wcvm4")
 game_over = ExtResource("16_j3b5i")
 
@@ -80,7 +82,7 @@ stream = ExtResource("20_24djp")
 volume_db = -3.0
 autoplay = true
 
-[node name="Control" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,7 +92,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Score" type="RichTextLabel" parent="Control"]
+[node name="Score" type="RichTextLabel" parent="UI"]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 3
@@ -98,16 +100,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -435.0
-offset_top = -230.0
-offset_right = -3.0
-offset_bottom = -72.0
+offset_left = -1234.0
+offset_top = -991.0
+offset_right = -802.0
+offset_bottom = -833.0
 grow_horizontal = 0
 grow_vertical = 0
 bbcode_enabled = true
 text = "[font_size=70]Score: 88"
 
-[node name="Progress" type="TextureProgressBar" parent="Control/Score"]
+[node name="Progress" type="TextureProgressBar" parent="UI/Score"]
 layout_mode = 2
 offset_left = -90.0
 offset_top = 109.0
@@ -122,7 +124,7 @@ texture_progress = ExtResource("20_841g7")
 tint_under = Color(0, 0, 0, 0.215686)
 tint_progress = Color(0, 0.605905, 0, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Score"]
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Score"]
 layout_mode = 2
 offset_left = -131.0
 offset_top = 121.0
@@ -133,7 +135,7 @@ grow_vertical = 0
 bbcode_enabled = true
 text = "[center][font_size=25]Points until next level:"
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="Panel" type="Panel" parent="UI"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -147,14 +149,14 @@ offset_bottom = -326.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Title" type="RichTextLabel" parent="Control/Panel"]
+[node name="Title" type="RichTextLabel" parent="UI/Panel"]
 layout_mode = 0
 offset_right = 426.0
 offset_bottom = 57.0
 bbcode_enabled = true
 text = "[font_size=40][center]Tile"
 
-[node name="TextureRect" type="TextureRect" parent="Control/Panel"]
+[node name="TextureRect" type="TextureRect" parent="UI/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -166,7 +168,7 @@ offset_bottom = 258.0
 grow_horizontal = 2
 texture = ExtResource("3_oyow1")
 
-[node name="Description" type="RichTextLabel" parent="Control/Panel"]
+[node name="Description" type="RichTextLabel" parent="UI/Panel"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -178,7 +180,7 @@ grow_horizontal = 2
 bbcode_enabled = true
 text = "+1 for each neighbouring X, and X"
 
-[node name="Current Bonus" type="RichTextLabel" parent="Control/Panel"]
+[node name="Current Bonus" type="RichTextLabel" parent="UI/Panel"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -190,7 +192,7 @@ text = "[center][font_size=40
 ]Current Bonus:
 [color=green]+30"
 
-[node name="Deck" type="TextureRect" parent="Control"]
+[node name="Deck" type="TextureRect" parent="UI"]
 layout_mode = 2
 offset_left = 76.0
 offset_top = 739.0
@@ -199,13 +201,36 @@ offset_bottom = 946.0
 grow_vertical = 0
 texture = ExtResource("4_vuhij")
 
-[node name="Deck Count" type="RichTextLabel" parent="Control/Deck"]
+[node name="Deck Count" type="RichTextLabel" parent="UI/Deck"]
 layout_mode = 0
 offset_top = 67.0
 offset_right = 231.0
 offset_bottom = 209.0
 bbcode_enabled = true
 text = "[center][font_size=50]Deck: 8"
+
+[node name="DeckDisplay" parent="UI" instance=ExtResource("24_kwui8")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -238.0
+offset_top = -208.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="DiscardDisplay" parent="UI" instance=ExtResource("25_fw84r")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -208.0
+offset_right = 238.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

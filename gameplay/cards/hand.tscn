@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bibonpfb3p8nr"]
+
+[ext_resource type="PackedScene" uid="uid://dcejjeouuqku1" path="res://gameplay/ui/discard_display.tscn" id="1_2vlkj"]
+[ext_resource type="Script" uid="uid://b1carce7pn647" path="res://gameplay/cards/hand.gd" id="1_xais8"]
+[ext_resource type="PackedScene" uid="uid://b15lqqjw44qsn" path="res://gameplay/cards/card.tscn" id="2_byd1o"]
+[ext_resource type="PackedScene" uid="uid://fdl4fo1ungf6" path="res://gameplay/ui/deck_display.tscn" id="2_xais8"]
+
+[node name="Hand" type="Control" node_paths=PackedStringArray("card_container", "deck_display", "discard_display")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xais8")
+card_container = NodePath("CardContainer")
+card_prefab = ExtResource("2_byd1o")
+deck_display = NodePath("DeckDisplay")
+discard_display = NodePath("DiscardDisplay")
+
+[node name="DeckDisplay" parent="." instance=ExtResource("2_xais8")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -238.0
+offset_top = -208.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="DiscardDisplay" parent="." instance=ExtResource("1_2vlkj")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -208.0
+offset_right = 238.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="CardContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 244.0
+offset_top = -240.0
+offset_right = -243.0
+grow_horizontal = 2
+grow_vertical = 0

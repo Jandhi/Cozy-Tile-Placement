@@ -6,6 +6,7 @@ var tile_position : Vector2i
 var tile_type : TileType = TileType.Volcano
 @export var party_particles : PackedScene
 @export var floating_points : PackedScene
+@export var label : RichTextLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -164,7 +165,9 @@ var descriptions = {
 
 func set_type(type : TileType):
 	tile_type = type
-	$Sprite2D.texture = textures[type]
+	label.text = "[center]" + get_tile_name()
+	$Sprite2D.self_modulate = Color(1, 1, 1, 1)
+	#$Sprite2D.texture = textures[type]
 
 func get_tile_name() -> String:
 	return names[tile_type]

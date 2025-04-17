@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://deovpb0wbfgxf"]
 
-[ext_resource type="Script" path="res://FloatingPoints.gd" id="1_42bv7"]
+[ext_resource type="Script" uid="uid://cldm8tqft1bax" path="res://FloatingPoints.gd" id="1_42bv7"]
 
 [node name="FloatingPoints" type="Node2D"]
 z_index = 1

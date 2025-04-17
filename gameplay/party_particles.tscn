@@ -5,12 +5,11 @@ _data = [Vector2(0.0188679, 0.993848), 0.0, 0.0, 0, 0, Vector2(0.981132, 0), -2.
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_tgvv3"]
-min_value = -1.0
+_limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="PartyParticles" type="CPUParticles2D"]
-position = Vector2(1, 1)
 emitting = false
 amount = 100
 one_shot = true

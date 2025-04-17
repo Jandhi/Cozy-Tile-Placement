@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2lpbh8m0g3w"]
 
-[ext_resource type="Script" path="res://gameplay/game_over.gd" id="1_eiots"]
+[ext_resource type="Script" uid="uid://rox3qpmvsuhq" path="res://gameplay/game_over.gd" id="1_eiots"]
 [ext_resource type="AudioStream" uid="uid://c4yp3pmcj435v" path="res://sfx/GameOver.mp3" id="2_eoxux"]
 
 [sub_resource type="Theme" id="Theme_bale1"]
