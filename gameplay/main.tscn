@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://hmnlqvp4swsg"]
 
-[ext_resource type="Script" uid="uid://c6l788lq58mb6" path="res://gameplay/grid.gd" id="1_lep0a"]
-[ext_resource type="PackedScene" uid="uid://brnrru1pp0i73" path="res://gameplay/tile.tscn" id="2_3vn84"]
+[ext_resource type="Script" uid="uid://c6l788lq58mb6" path="res://gameplay/grid_old.gd" id="1_lep0a"]
+[ext_resource type="PackedScene" uid="uid://brnrru1pp0i73" path="res://gameplay/tile_old.tscn" id="2_3vn84"]
 [ext_resource type="AudioStream" uid="uid://bwhwxv7exla81" path="res://zapsplat_pack_pickaxe_sounds_mp3/zapsplat_industrial_pick_axe_single_hit_soil_mud_ground_001_103436.mp3" id="3_e61sk"]
 [ext_resource type="Texture2D" uid="uid://3apht8els1ga" path="res://foundation_tiles/deadlands/1-deadlands_vulcano.png" id="3_oyow1"]
 [ext_resource type="AudioStream" uid="uid://bj3q8pfe641lk" path="res://zapsplat_pack_pickaxe_sounds_mp3/zapsplat_industrial_pick_axe_single_hit_soil_mud_ground_011_103446.mp3" id="3_s3m0l"]

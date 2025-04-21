@@ -7,10 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://3a0v6di2ajhh" path="res://WhiteBuilding.png" id="3_pbty3"]
 [ext_resource type="Texture2D" uid="uid://conb4uj7phcbs" path="res://WhiteDenizen.png" id="4_t3kgb"]
 
-[node name="Card" type="Control" node_paths=PackedStringArray("name_label", "type_label", "image", "tags_container", "description_label")]
+[node name="Card" type="Control" node_paths=PackedStringArray("name_label", "type_label", "image", "tags_container", "description_label", "point_origin")]
 custom_minimum_size = Vector2(200, 280)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -140.0
+offset_right = 100.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(100, 140)
 script = ExtResource("1_l4mc4")
 name_label = NodePath("Panel/VBoxContainer/NameLabel")
@@ -18,17 +28,20 @@ type_label = NodePath("Panel/VBoxContainer/RichTextLabel")
 image = NodePath("Panel/VBoxContainer/Image")
 tags_container = NodePath("Panel/VBoxContainer/TagsContainer")
 description_label = NodePath("Panel/VBoxContainer/HBoxContainer2/Description")
+point_origin = NodePath("PointOrigin")
 terrain = ExtResource("1_jbaq8")
 building = ExtResource("3_pbty3")
 denizen = ExtResource("4_t3kgb")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+color = Color(0.14, 0.14, 0.14, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -40,6 +53,7 @@ grow_vertical = 2
 
 [node name="NameLabel" type="RichTextLabel" parent="Panel/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
 text = "[center][b]Name"
@@ -47,6 +61,7 @@ fit_content = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_font_sizes/italics_font_size = 10
 bbcode_enabled = true
 text = "[center][i]Building"
@@ -62,6 +77,7 @@ stretch_mode = 5
 [node name="5px Buffer" type="Control" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="TagsContainer" type="GridContainer" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
@@ -78,13 +94,26 @@ size_flags_vertical = 3
 [node name="5px Buffer" type="Control" parent="Panel/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Description" type="RichTextLabel" parent="Panel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 text = "This is the garage"
 
 [node name="5px Buffer2" type="Control" parent="Panel/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
+mouse_filter = 1
+
+[node name="PointOrigin" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+mouse_filter = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

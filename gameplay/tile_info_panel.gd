@@ -4,5 +4,5 @@ class_name TileInfoPanel extends Panel
 
 
 func _ready():
-	tags_container.spawn_tag("Sylvan", Color.GREEN)
-	tags_container.spawn_tag("Aquatic", Color.BLUE)
+	tags_container.spawn_tag(Tags.Tag.Sylvan)
+	tags_container.spawn_tag(Tags.Tag.Aquatic)

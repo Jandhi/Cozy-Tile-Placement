@@ -9,6 +9,7 @@ custom_minimum_size = Vector2(0, 20)
 offset_right = 44.0
 offset_bottom = 21.0
 size_flags_vertical = 3
+mouse_filter = 1
 texture = ExtResource("1_yfyao")
 region_rect = Rect2(0, 0, 11.9163, 13.0465)
 patch_margin_left = 8
@@ -29,10 +30,12 @@ grow_vertical = 2
 [node name="Control" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[center]Test"
@@ -40,3 +43,4 @@ text = "[center]Test"
 [node name="Control2" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TileInfo" load_steps=2 format=3 uid="uid://doxo5uth8vniw"]
+
+[ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="1_2pchu"]
+
+[resource]
+script = ExtResource("1_2pchu")
+tile_name = "Lumberjack"
+tile_description = ""
+tile_type = 2
+tile_color = Color(0, 0, 0, 1)
+tags = Array[int]([])
+metadata/_custom_type_script = "uid://c6xhn0d50s36v"

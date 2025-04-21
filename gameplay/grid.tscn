@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://de6dit6g53dyr"]
+
+[ext_resource type="Script" uid="uid://cy32fiqv7cyo6" path="res://gameplay/grid.gd" id="1_cqgug"]
+[ext_resource type="PackedScene" uid="uid://6fhwhtkmknc5" path="res://gameplay/tile.tscn" id="2_i0ki5"]
+
+[node name="Grid" type="Node2D"]
+script = ExtResource("1_cqgug")
+tile_prototype = ExtResource("2_i0ki5")

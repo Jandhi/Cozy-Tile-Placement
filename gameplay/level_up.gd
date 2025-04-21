@@ -1,16 +1,16 @@
 extends Panel
 
-@export var grid : Grid
+@export var grid : GridOld
 var packs : Array[Pack] = [
 	Pack.new_pack(
 		"Nature Pack",
 		"Contains all the nature tiles",
 		preload("res://foundation_tiles/greenlands/2-greenlands_forest.png"),
 		[
-			Tile.TileType.Forest,
-			Tile.TileType.Trees,
-			Tile.TileType.Hill,
-			Tile.TileType.Field,
+			TileOld.TileType.Forest,
+			TileOld.TileType.Trees,
+			TileOld.TileType.Hill,
+			TileOld.TileType.Field,
 		]
 	),
 	Pack.new_pack(
@@ -18,16 +18,16 @@ var packs : Array[Pack] = [
 		"Contains town tiles",
 		preload("res://foundation_tiles/greenlands/11-greenlands_village.png"),
 		[
-			Tile.TileType.Town,
-			Tile.TileType.Town,
-			Tile.TileType.Town,
-			Tile.TileType.Huts,
-			Tile.TileType.Huts,
-			Tile.TileType.Huts,
-			Tile.TileType.Castle,
-			Tile.TileType.Farms,
-			Tile.TileType.Farms,
-			Tile.TileType.Farms,
+			TileOld.TileType.Town,
+			TileOld.TileType.Town,
+			TileOld.TileType.Town,
+			TileOld.TileType.Huts,
+			TileOld.TileType.Huts,
+			TileOld.TileType.Huts,
+			TileOld.TileType.Castle,
+			TileOld.TileType.Farms,
+			TileOld.TileType.Farms,
+			TileOld.TileType.Farms,
 		]
 	),
 	Pack.new_pack(
@@ -35,17 +35,17 @@ var packs : Array[Pack] = [
 		"Contains water tiles",
 		preload("res://foundation_tiles/greenlands/5-greenlands_water.png"),
 		[
-			Tile.TileType.Water,
-			Tile.TileType.River,
-			Tile.TileType.Lake,
-			Tile.TileType.Water,
-			Tile.TileType.River,
-			Tile.TileType.Lake,
-			Tile.TileType.Water,
-			Tile.TileType.River,
-			Tile.TileType.Lake,
-			Tile.TileType.Swamp,
-			Tile.TileType.Hole,
+			TileOld.TileType.Water,
+			TileOld.TileType.River,
+			TileOld.TileType.Lake,
+			TileOld.TileType.Water,
+			TileOld.TileType.River,
+			TileOld.TileType.Lake,
+			TileOld.TileType.Water,
+			TileOld.TileType.River,
+			TileOld.TileType.Lake,
+			TileOld.TileType.Swamp,
+			TileOld.TileType.Hole,
 		]
 	),
 	Pack.new_pack(
@@ -53,15 +53,15 @@ var packs : Array[Pack] = [
 		"Contains mountainous tiles",
 		preload("res://foundation_tiles/greenlands/9-greenlands_mountains.png"),
 		[
-			Tile.TileType.Mountain,
-			Tile.TileType.Mountain,
-			Tile.TileType.Mountain,
-			Tile.TileType.Hill,
-			Tile.TileType.Hill,
-			Tile.TileType.Hill,
-			Tile.TileType.Cave,
-			Tile.TileType.Stones,
-			Tile.TileType.Volcano,
+			TileOld.TileType.Mountain,
+			TileOld.TileType.Mountain,
+			TileOld.TileType.Mountain,
+			TileOld.TileType.Hill,
+			TileOld.TileType.Hill,
+			TileOld.TileType.Hill,
+			TileOld.TileType.Cave,
+			TileOld.TileType.Stones,
+			TileOld.TileType.Volcano,
 		]
 	),
 	Pack.new_pack(
@@ -69,17 +69,17 @@ var packs : Array[Pack] = [
 		"Contains city tiles",
 		preload("res://foundation_tiles/greenlands/12-greenlands_city.png"),
 		[
-			Tile.TileType.Town,
-			Tile.TileType.Town,
-			Tile.TileType.Town,
-			Tile.TileType.Town,
-			Tile.TileType.Castle,
-			Tile.TileType.Castle,
-			Tile.TileType.Keep,
-			Tile.TileType.Keep,
-			Tile.TileType.Wonder,
-			Tile.TileType.Tower,
-			Tile.TileType.Tower,
+			TileOld.TileType.Town,
+			TileOld.TileType.Town,
+			TileOld.TileType.Town,
+			TileOld.TileType.Town,
+			TileOld.TileType.Castle,
+			TileOld.TileType.Castle,
+			TileOld.TileType.Keep,
+			TileOld.TileType.Keep,
+			TileOld.TileType.Wonder,
+			TileOld.TileType.Tower,
+			TileOld.TileType.Tower,
 		]
 	),
 	Pack.new_pack(
@@ -87,13 +87,13 @@ var packs : Array[Pack] = [
 		"Contains strange tiles",
 		preload("res://foundation_tiles/greenlands/24-greenlands_cristals.png"),
 		[
-			Tile.TileType.Portal,
-			Tile.TileType.Crystals,
-			Tile.TileType.Stones,
-			Tile.TileType.Tower,
-			Tile.TileType.Fog,
-			Tile.TileType.FloatingIsland,
-			Tile.TileType.Wonder,
+			TileOld.TileType.Portal,
+			TileOld.TileType.Crystals,
+			TileOld.TileType.Stones,
+			TileOld.TileType.Tower,
+			TileOld.TileType.Fog,
+			TileOld.TileType.FloatingIsland,
+			TileOld.TileType.Wonder,
 		]
 	),
 	Pack.new_pack(
@@ -101,14 +101,14 @@ var packs : Array[Pack] = [
 		"Contains spooky tiles",
 		preload("res://foundation_tiles/greenlands/19-greenlands_graveyard.png"),
 		[
-			Tile.TileType.DeadTrees,
-			Tile.TileType.DeadTrees,
-			Tile.TileType.Ruin,
-			Tile.TileType.Bones,
-			Tile.TileType.Bones,
-			Tile.TileType.Swamp,
-			Tile.TileType.Fog,
-			Tile.TileType.Cave,
+			TileOld.TileType.DeadTrees,
+			TileOld.TileType.DeadTrees,
+			TileOld.TileType.Ruin,
+			TileOld.TileType.Bones,
+			TileOld.TileType.Bones,
+			TileOld.TileType.Swamp,
+			TileOld.TileType.Fog,
+			TileOld.TileType.Cave,
 		]
 	),
 	Pack.new_pack(
@@ -116,15 +116,15 @@ var packs : Array[Pack] = [
 		"Contains flat tiles",
 		preload("res://foundation_tiles/greenlands/3-greenlands_tundra.png"),
 		[
-			Tile.TileType.Swamp,
-			Tile.TileType.Swamp,
-			Tile.TileType.Swamp,
-			Tile.TileType.Field,
-			Tile.TileType.Field,
-			Tile.TileType.Field,
-			Tile.TileType.River,
-			Tile.TileType.River,
-			Tile.TileType.River,
+			TileOld.TileType.Swamp,
+			TileOld.TileType.Swamp,
+			TileOld.TileType.Swamp,
+			TileOld.TileType.Field,
+			TileOld.TileType.Field,
+			TileOld.TileType.Field,
+			TileOld.TileType.River,
+			TileOld.TileType.River,
+			TileOld.TileType.River,
 		]
 	),
 ]
@@ -166,7 +166,7 @@ func do_level_up():
 	text3.text = "[center][font_size=40]%s:\n[font_size=20]%s" % [my_packs[2].pack_name, my_packs[2].description]
 
 func on_select(index : int):
-	var tiles : Array[Tile.TileType] = []
+	var tiles : Array[TileOld.TileType] = []
 
 	for i in range(5):
 		tiles.append(my_packs[index].tiles[randi() % my_packs[index].tiles.size()])

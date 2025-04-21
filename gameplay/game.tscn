@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b05qjycmex5pi"]
+
+[ext_resource type="Script" uid="uid://f161gtm07ouc" path="res://gameplay/cards/card_drag_manager.gd" id="1_726hq"]
+[ext_resource type="PackedScene" uid="uid://de6dit6g53dyr" path="res://gameplay/grid.tscn" id="1_wvykf"]
+[ext_resource type="PackedScene" uid="uid://bibonpfb3p8nr" path="res://gameplay/cards/hand.tscn" id="2_wvykf"]
+[ext_resource type="Script" uid="uid://cq0nvmau6id1o" path="res://gameplay/deck_manager.gd" id="4_pvupv"]
+[ext_resource type="PackedScene" uid="uid://di8bo02kalk43" path="res://gameplay/ui/deck_view.tscn" id="5_xww6x"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Grid" parent="." instance=ExtResource("1_wvykf")]
+position = Vector2(930, 496)
+width = 360
+height = 100
+
+[node name="CardDragManager" type="Node2D" parent="." node_paths=PackedStringArray("hand", "grid")]
+script = ExtResource("1_726hq")
+hand = NodePath("../Hand")
+grid = NodePath("../Grid")
+
+[node name="Hand" parent="." instance=ExtResource("2_wvykf")]
+layout_mode = 1
+
+[node name="DeckManager" type="Node" parent="." node_paths=PackedStringArray("hand")]
+script = ExtResource("4_pvupv")
+deck_view_prototype = ExtResource("5_xww6x")
+hand = NodePath("../Hand")
+
+[connection signal="card_discarded" from="Hand" to="DeckManager" method="add_card_to_discard"]
+[connection signal="deck_clicked" from="Hand" to="DeckManager" method="open_deck_view"]
+[connection signal="discard_clicked" from="Hand" to="DeckManager" method="open_discard_view"]
+[connection signal="discard_count_changed" from="DeckManager" to="Hand" method="set_discard_count"]
+[connection signal="draw_pile_count_changed" from="DeckManager" to="Hand" method="set_deck_count"]

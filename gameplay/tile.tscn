@@ -1,24 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://brnrru1pp0i73"]
+[gd_scene load_steps=5 format=3 uid="uid://6fhwhtkmknc5"]
 
-[ext_resource type="Script" uid="uid://bpj7igevkoycb" path="res://gameplay/tile.gd" id="1_f2ahv"]
-[ext_resource type="PackedScene" uid="uid://d3if6tclmjvri" path="res://gameplay/party_particles.tscn" id="2_wgo05"]
-[ext_resource type="PackedScene" uid="uid://deovpb0wbfgxf" path="res://gameplay/floating_points.tscn" id="3_fvd86"]
+[ext_resource type="Script" uid="uid://b1r6nuickosij" path="res://gameplay/tile.gd" id="1_f2ahv"]
+[ext_resource type="Texture2D" uid="uid://3a0v6di2ajhh" path="res://WhiteBuilding.png" id="3_f3plb"]
 [ext_resource type="Texture2D" uid="uid://tt05cwxi2q0n" path="res://WhiteTile.png" id="4_f3plb"]
+[ext_resource type="Texture2D" uid="uid://conb4uj7phcbs" path="res://WhiteDenizen.png" id="4_l36dq"]
 
-[node name="Root" type="Node2D" node_paths=PackedStringArray("label")]
+[node name="Tile" type="Node2D" node_paths=PackedStringArray("sprite", "label", "cannot_place")]
 script = ExtResource("1_f2ahv")
-party_particles = ExtResource("2_wgo05")
-floating_points = ExtResource("3_fvd86")
+sprite = NodePath("Sprite")
 label = NodePath("RichTextLabel")
+cannot_place = NodePath("CantPlace")
+terrain_texture = ExtResource("4_f3plb")
+building_texture = ExtResource("3_f3plb")
+denizen_texture = ExtResource("4_l36dq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("4_f3plb")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-modulate = Color(0, 0, 0, 1)
-offset_left = -54.0
-offset_top = 48.0
-offset_right = 55.0
-offset_bottom = 88.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 40.0
+offset_right = 65.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
 bbcode_enabled = true
-text = "[center]Test"
+text = "[center][color=black]Test"
+
+[node name="CantPlace" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 0.34902)
+texture = ExtResource("4_f3plb")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TileInfo" load_steps=2 format=3 uid="uid://0kq7lenkbf1a"]
+
+[ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="1_0bvs4"]
+
+[resource]
+script = ExtResource("1_0bvs4")
+tile_name = "Lumber Mill"
+tile_description = ""
+tile_type = 1
+tile_color = Color(0.501095, 0.267953, 0.217736, 1)
+tags = Array[int]([])
+metadata/_custom_type_script = "uid://c6xhn0d50s36v"

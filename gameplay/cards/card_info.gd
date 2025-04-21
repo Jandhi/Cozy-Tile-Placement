@@ -7,5 +7,6 @@ enum CardType {
     ACTION
 }
 
-var type : CardType
+var type : CardType = CardType.TILE
+var id : int = -1
 @export var tile_info : TileInfo
