@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b05qjycmex5pi"]
+[gd_scene load_steps=7 format=3 uid="uid://b05qjycmex5pi"]
 
 [ext_resource type="Script" uid="uid://f161gtm07ouc" path="res://gameplay/cards/card_drag_manager.gd" id="1_726hq"]
 [ext_resource type="PackedScene" uid="uid://de6dit6g53dyr" path="res://gameplay/grid.tscn" id="1_wvykf"]
 [ext_resource type="PackedScene" uid="uid://bibonpfb3p8nr" path="res://gameplay/cards/hand.tscn" id="2_wvykf"]
 [ext_resource type="Script" uid="uid://cq0nvmau6id1o" path="res://gameplay/deck_manager.gd" id="4_pvupv"]
 [ext_resource type="PackedScene" uid="uid://di8bo02kalk43" path="res://gameplay/ui/deck_view.tscn" id="5_xww6x"]
+[ext_resource type="PackedScene" uid="uid://c2v5tvsakluqt" path="res://gameplay/ui/season_display.tscn" id="6_y1k8g"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -26,11 +27,30 @@ grid = NodePath("../Grid")
 
 [node name="Hand" parent="." instance=ExtResource("2_wvykf")]
 layout_mode = 1
+offset_right = -120.0
 
 [node name="DeckManager" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("4_pvupv")
 deck_view_prototype = ExtResource("5_xww6x")
 hand = NodePath("../Hand")
+
+[node name="EndTurn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "End Turn"
+
+[node name="GameManager" type="Node" parent="."]
+
+[node name="SeasonDisplay" parent="." instance=ExtResource("6_y1k8g")]
+layout_mode = 1
 
 [connection signal="card_discarded" from="Hand" to="DeckManager" method="add_card_to_discard"]
 [connection signal="deck_clicked" from="Hand" to="DeckManager" method="open_deck_view"]

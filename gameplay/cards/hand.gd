@@ -7,7 +7,6 @@ signal discard_clicked()
 
 signal card_discarded(card : Card)
 
-@export var hand_size : int = 5
 @export var card_container : Control
 @export var card_prefab : PackedScene
 @export var deck_display : DeckDisplay
