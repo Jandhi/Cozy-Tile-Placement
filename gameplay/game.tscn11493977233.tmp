@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b05qjycmex5pi"]
+[gd_scene load_steps=10 format=3 uid="uid://b05qjycmex5pi"]
 
 [ext_resource type="Script" uid="uid://f161gtm07ouc" path="res://gameplay/cards/card_drag_manager.gd" id="1_726hq"]
 [ext_resource type="PackedScene" uid="uid://de6dit6g53dyr" path="res://gameplay/grid.tscn" id="1_wvykf"]
@@ -8,9 +8,6 @@
 [ext_resource type="Script" uid="uid://dks138iq86h4l" path="res://gameplay/game_manager.gd" id="6_8w0tg"]
 [ext_resource type="PackedScene" uid="uid://c2v5tvsakluqt" path="res://gameplay/ui/season_display.tscn" id="6_y1k8g"]
 [ext_resource type="Script" uid="uid://b8bi2lh1i6w68" path="res://gameplay/tile_effect/game_state.gd" id="7_aygn6"]
-[ext_resource type="Resource" uid="uid://civ7cgu61ormu" path="res://gameplay/seasons/season_of_rain.tres" id="8_4um4t"]
-[ext_resource type="PackedScene" uid="uid://deovpb0wbfgxf" path="res://gameplay/floating_points.tscn" id="9_40yl0"]
-[ext_resource type="Script" uid="uid://wh0okdku5mm" path="res://gameplay/tile_manager.gd" id="11_bcc5h"]
 
 [sub_resource type="Resource" id="Resource_4um4t"]
 script = ExtResource("7_aygn6")
@@ -24,17 +21,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="."]
-z_index = -10
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.247059, 0.537255, 0.803922, 1)
-
 [node name="Grid" parent="." instance=ExtResource("1_wvykf")]
+position = Vector2(930, 496)
 width = 360
 height = 100
 
@@ -52,7 +40,7 @@ script = ExtResource("4_pvupv")
 deck_view_prototype = ExtResource("5_xww6x")
 hand = NodePath("../Hand")
 
-[node name="EndTurnButton" type="Button" parent="."]
+[node name="EndTurn" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -65,42 +53,17 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "End Turn"
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("grid", "deck_manager", "season_display", "background")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("grid", "season_display")]
 script = ExtResource("6_8w0tg")
 grid = NodePath("../Grid")
-deck_manager = NodePath("../DeckManager")
 game_state = SubResource("Resource_4um4t")
-season = ExtResource("8_4um4t")
-floating_points_prefab = ExtResource("9_40yl0")
 season_display = NodePath("../SeasonDisplay")
-background = NodePath("../Background")
 
 [node name="SeasonDisplay" parent="." instance=ExtResource("6_y1k8g")]
 layout_mode = 1
-
-[node name="ResetCameraButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -125.0
-offset_top = -211.0
-offset_right = -9.0
-offset_bottom = -180.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Reset Camera"
-
-[node name="TileManager" type="Node" parent="."]
-script = ExtResource("11_bcc5h")
-metadata/_custom_type_script = "uid://wh0okdku5mm"
 
 [connection signal="card_discarded" from="Hand" to="DeckManager" method="add_card_to_discard"]
 [connection signal="deck_clicked" from="Hand" to="DeckManager" method="open_deck_view"]
 [connection signal="discard_clicked" from="Hand" to="DeckManager" method="open_discard_view"]
 [connection signal="discard_count_changed" from="DeckManager" to="Hand" method="set_discard_count"]
 [connection signal="draw_pile_count_changed" from="DeckManager" to="Hand" method="set_deck_count"]
-[connection signal="pressed" from="EndTurnButton" to="GameManager" method="end_turn"]
-[connection signal="pressed" from="ResetCameraButton" to="Grid" method="reset_camera"]

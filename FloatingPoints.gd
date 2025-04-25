@@ -1,7 +1,6 @@
 extends Node2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func start_fade():
 	var tween = get_tree().create_tween().set_parallel(true)
 
 	tween.tween_property($RichTextLabel, "modulate:a", 0.0, 1)
@@ -9,12 +8,6 @@ func _ready():
 
 	await get_tree().create_timer(1.2).timeout
 	queue_free()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func set_text(amt: int) -> void:
 	if amt > 0:

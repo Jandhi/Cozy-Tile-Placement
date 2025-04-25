@@ -1,14 +1,16 @@
 class_name Grid extends Node2D
 
+signal preview_moved(tile : Tile)
+signal preview_removed()
+signal preview_placed(tile : Tile)
+
 @export var width : int
 @export var height : int
+@export var tile_prototype : PackedScene
 
 var terrain_tiles : Dictionary[Vector2i, Tile] = {}
 var building_tiles : Dictionary[Vector2i, Tile] = {}
 var denizen_tiles : Dictionary[Vector2i, Tile] = {}
-
-@export var tile_prototype : PackedScene
-
 var preview_tile : Tile = null
 var drag_start : Vector2 = Vector2.ZERO
 var is_dragging : bool = false
@@ -56,6 +58,7 @@ func _input(event):
 		preview_tile.tile_position = mouse_pos 
 		preview_tile.position = get_tile_position(preview_tile.tile_position)
 		preview_tile.cannot_place.visible = not can_place_preview()
+		preview_moved.emit(preview_tile)
 
 var is_selected : bool = false
 var grid : Grid = null
@@ -68,11 +71,13 @@ func spawn_preview(card : Card):
 	preview_tile.tile_position = get_nearest_tile_index(get_global_mouse_position())
 	preview_tile.position = get_tile_position(preview_tile.tile_position)
 	preview_tile.cannot_place.visible = not can_place_preview()
+	preview_moved.emit(preview_tile)
 
 func remove_preview():
 	if preview_tile != null:
 		preview_tile.queue_free()
 		preview_tile = null
+		preview_removed.emit()
 
 func place_preview():
 	if preview_tile == null:
@@ -85,13 +90,14 @@ func place_preview():
 	elif preview_tile.tile_info.tile_type == TileInfo.Tiletype.DENIZEN:
 		denizen_tiles[preview_tile.tile_position] = preview_tile
 	
+	preview_placed.emit(preview_tile)
 	preview_tile = null
 
 func can_place_preview():
 	if preview_tile.tile_info.tile_type == TileInfo.Tiletype.TERRAIN:
-		return get_neighbour_indices(preview_tile.tile_position).any(
+		return (get_neighbour_indices(preview_tile.tile_position).any(
 			func(x): return terrain_tiles.has(x)
-		) or terrain_tiles.size() == 0
+		) and not preview_tile.tile_position in terrain_tiles) or terrain_tiles.size() == 0
 	if preview_tile.tile_info.tile_type == TileInfo.Tiletype.BUILDING:
 		return preview_tile.tile_position in terrain_tiles and preview_tile.tile_position not in building_tiles # and more restrictions after
 	if preview_tile.tile_info.tile_type == TileInfo.Tiletype.DENIZEN:
@@ -131,6 +137,27 @@ func get_neighbour_indices(index : Vector2i) -> Array:
 	else:
 		return odd_x_neighours.map(func(x): return x + index)
 
+func get_neighbours(index : Vector2i) -> Array[Tile]:
+	var result : Array[Tile] = []
+	for neighbour in self.get_neighbour_indices(index):
+		if terrain_tiles.has(neighbour):
+			result.append(terrain_tiles[neighbour])
+		elif building_tiles.has(neighbour):
+			result.append(building_tiles[neighbour])
+		elif denizen_tiles.has(neighbour):
+			result.append(denizen_tiles[neighbour])
+	return result
+
+func get_all_tiles() -> Array[Tile]:
+	var result : Array[Tile] = []
+	for tile in terrain_tiles.values():
+		result.append(tile)
+	for tile in building_tiles.values():
+		result.append(tile)
+	for tile in denizen_tiles.values():
+		result.append(tile)
+	return result
+
 func get_surrounding_indices(index : Vector2i, distance : int) -> Array:
 	var result = []
 	var stack = []
@@ -158,3 +185,6 @@ func get_surrounding_indices(index : Vector2i, distance : int) -> Array:
 				stack.append([neighbour, my_distance + 1])
 
 	return result
+
+func reset_camera():
+	self.position = Vector2.ZERO

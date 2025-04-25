@@ -11,13 +11,6 @@ var draw_pile : Array[CardInfo] = []
 var discard_pile : Array[CardInfo] = []
 var exhaust_pile : Array[CardInfo] = []
 
-func _ready() -> void:
-	for i in range(20):
-		add_test_card()
-
-	for i in range(5):
-		draw_card()
-
 func add_test_card():
 	var info = CardInfo.new()
 	info.type = CardInfo.CardType.TILE
@@ -38,13 +31,23 @@ func add_card_to_discard(card : Card):
 	discard_pile.append(card.card_info)
 	discard_count_changed.emit(discard_pile.size())
 
+func discard_hand():
+	await hand.discard_hand()
+
+func draw_hand(size : int):
+	for i in range(size):
+		await draw_card()
+
 func draw_card():
 	if draw_pile.size() == 0:
+		if discard_pile.size() == 0:
+			return
+
 		reshuffle_deck()
 
 	var card_info : CardInfo = draw_pile.pop_back()
-	hand.spawn_card(card_info)
 	draw_pile_count_changed.emit(draw_pile.size())
+	await hand.spawn_card(card_info)
 
 func reshuffle_deck():
 	if discard_pile.size() == 0:

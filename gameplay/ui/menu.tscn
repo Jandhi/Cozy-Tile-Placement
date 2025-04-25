@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqhsx8agsih07"]
+
+[ext_resource type="Script" uid="uid://wj2nytuh4dll" path="res://gameplay/ui/menu.gd" id="1_okqvr"]
+[ext_resource type="PackedScene" uid="uid://b05qjycmex5pi" path="res://gameplay/game.tscn" id="2_oca6e"]
+[ext_resource type="AudioStream" uid="uid://duajaex6rjm68" path="res://sfx/Bird's Eye.mp3" id="3_2vbp3"]
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_okqvr")
+game_prefab = ExtResource("2_oca6e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+text = "[center][b]Cozy Tile Laying Game"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/italics_font_size = 24
+bbcode_enabled = true
+text = "[center][i]This is still a prototype"
+fit_content = true
+
+[node name="Control" type="Control" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="Menu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Menu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "Start Game"
+
+[node name="Control" type="Control" parent="Menu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2vbp3")
+autoplay = true
+
+[connection signal="pressed" from="Menu/VBoxContainer/HBoxContainer/Button" to="Menu" method="_on_play_button_pressed"]

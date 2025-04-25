@@ -32,4 +32,4 @@ func set_card_info(info : CardInfo):
 
 		image.self_modulate = info.tile_info.tile_color
 		tags_container.set_tags(info.tile_info.tags)
-		description_label.text = info.tile_info.tile_description
+		description_label.text = Tags.parse_tags(info.tile_info.tile_description)

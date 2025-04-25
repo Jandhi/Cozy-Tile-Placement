@@ -48,7 +48,7 @@ func spawn_card(card_info : CardInfo):
 	card_instance.global_position = deck_display.global_position
 	cards.append(card_instance)
 
-	organize_cards()
+	await organize_cards()
 
 func organize_cards(except_index : int = -1):
 	if card_tween != null:
@@ -68,6 +68,8 @@ func organize_cards(except_index : int = -1):
 
 		var angle = (i - (cards.size() - 1) / 2.0) * 5
 		card_tween.tween_property(card, "rotation_degrees", angle, 0.1)
+
+	await card_tween.finished
 
 func calculate_card_x(index : int, card_amount : int):
 	var midpoint = card_container.position.x + card_container.size.x / 2
@@ -115,11 +117,11 @@ func _on_card_unhovered(card : Card):
 
 func discard_hand():
 	while cards.size() > 0:
-		await discard(cards[0])
+		await discard(cards[0], 0.1)
 
 	cards.clear()
 
-func discard(card : Card):
+func discard(card : Card, time : float = 0.15):
 	card_discarded.emit(card)
 	card.z_index = 0
 	card.is_discarded = true
@@ -127,5 +129,5 @@ func discard(card : Card):
 	organize_cards()
 
 	await get_tree().create_tween()\
-		.tween_property(card, "global_position", discard_display.global_position, 0.15).finished
+		.tween_property(card, "global_position", discard_display.global_position, time).finished
 	card.queue_free()

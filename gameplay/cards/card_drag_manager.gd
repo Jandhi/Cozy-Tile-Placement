@@ -45,9 +45,10 @@ func _input(event: InputEvent) -> void:
 			if grid.can_place_preview():
 				grid.place_preview()
 				hand.discard(hovered_card)
-				hovered_card = null
 			else:
 				grid.remove_preview()
+
+			hovered_card = null
 			
 
 	if event is InputEventMouseMotion:

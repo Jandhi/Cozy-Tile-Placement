@@ -8,11 +8,10 @@ enum ComparisonType {
 
 @export var amount : int
 @export var comparison_type : ComparisonType 
-@export var required_tags : Array[Tags.Tag]
-@export var required_absent_tags : Array[Tags.Tag]
+@export var tile_filter : TileFilter
 
 func evaluate(_tile, neighbours : Array[TileInfo], _grid, _game_state : GameState) -> bool:
-	var count = neighbours.filter(self.fits).size()
+	var count = neighbours.filter(tile_filter.fits).size()
 	
 	match comparison_type:
 		ComparisonType.Equals:
@@ -23,11 +22,3 @@ func evaluate(_tile, neighbours : Array[TileInfo], _grid, _game_state : GameStat
 			return count < amount
 
 	return true
-
-
-func fits(neighbour : TileInfo):
-	return required_tags.all(func(tag : Tags.Tag):
-		return neighbour.tags.has(tag)
-	) and required_absent_tags.all(func (tag : Tags.Tag):
-		return not neighbour.tags.has(tag)
-	)

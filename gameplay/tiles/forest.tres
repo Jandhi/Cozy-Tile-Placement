@@ -1,14 +1,35 @@
-[gd_resource type="Resource" script_class="TileInfo" load_steps=3 format=3 uid="uid://bdqwm12us64pt"]
+[gd_resource type="Resource" script_class="TileInfo" load_steps=9 format=3 uid="uid://bdqwm12us64pt"]
 
 [ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="1_8pwyy"]
 [ext_resource type="Script" uid="uid://cy35gou2xjhkq" path="res://gameplay/tile_effect/tile_effect.gd" id="2_h3vx3"]
+[ext_resource type="Script" uid="uid://bboqg0gxp6wol" path="res://gameplay/tile_effect/flood_fill_effect.gd" id="3_m7nol"]
+[ext_resource type="Script" path="res://gameplay/tile_effect/tile_filter.gd" id="4_d34yq"]
+[ext_resource type="Script" uid="uid://cjbewc56q44uu" path="res://gameplay/tile_effect/placement_bonus.gd" id="5_d34yq"]
+
+[sub_resource type="Resource" id="Resource_cy6cq"]
+script = ExtResource("4_d34yq")
+required_name = ""
+excluded_name = ""
+required_tags = Array[int]([0])
+excluded_tags = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_61e7q"]
+script = ExtResource("3_m7nol")
+points = 1
+tile_filter = SubResource("Resource_cy6cq")
+metadata/_custom_type_script = "uid://bboqg0gxp6wol"
+
+[sub_resource type="Resource" id="Resource_qpct5"]
+script = ExtResource("5_d34yq")
+points = 10
+metadata/_custom_type_script = "uid://cjbewc56q44uu"
 
 [resource]
 script = ExtResource("1_8pwyy")
 tile_name = "Forest"
-tile_description = ""
+tile_description = "On placement: 10 points +1 for each connected Sylvan tile"
 tile_type = 0
 tile_color = Color(0, 0.543716, 0, 1)
 tags = Array[int]([0])
-tile_effects = Array[ExtResource("2_h3vx3")]([])
+tile_effects = Array[ExtResource("2_h3vx3")]([SubResource("Resource_61e7q"), SubResource("Resource_qpct5")])
 metadata/_custom_type_script = "uid://c6xhn0d50s36v"

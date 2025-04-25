@@ -101,6 +101,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
 text = "This is the garage"
 
 [node name="5px Buffer2" type="Control" parent="Panel/VBoxContainer/HBoxContainer2"]
