@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="TileInfo" load_steps=12 format=3 uid="uid://1phibvi3j0ga"]
+
+[ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="1_lqal6"]
+[ext_resource type="Script" uid="uid://cy35gou2xjhkq" path="res://gameplay/tile_effect/tile_effect.gd" id="2_s81im"]
+[ext_resource type="Script" uid="uid://dif8opncxwdbq" path="res://gameplay/tile_effect/conditional/tile_conditional.gd" id="3_rxpfe"]
+[ext_resource type="Script" uid="uid://cjbewc56q44uu" path="res://gameplay/tile_effect/placement_bonus.gd" id="4_dqy1p"]
+[ext_resource type="Script" uid="uid://cemrr05hpw1ak" path="res://gameplay/tile_effect/conditional/neighbour_count_conditional.gd" id="4_hm723"]
+[ext_resource type="Script" uid="uid://1pgtsqxx56eg" path="res://gameplay/tile_effect/tile_filter.gd" id="5_8u4ql"]
+[ext_resource type="Script" uid="uid://tbls6c5sbjq1" path="res://gameplay/tile_effect/conditional_effect.gd" id="5_hm723"]
+
+[sub_resource type="Resource" id="Resource_ipi7n"]
+script = ExtResource("5_8u4ql")
+required_name = ""
+excluded_name = ""
+required_tags = Array[int]([1])
+excluded_tags = Array[int]([])
+metadata/_custom_type_script = "uid://1pgtsqxx56eg"
+
+[sub_resource type="Resource" id="Resource_qf30v"]
+script = ExtResource("4_hm723")
+amount = 2
+comparison_type = 0
+tile_filter = SubResource("Resource_ipi7n")
+metadata/_custom_type_script = "uid://cemrr05hpw1ak"
+
+[sub_resource type="Resource" id="Resource_8u4ql"]
+script = ExtResource("4_dqy1p")
+points = 15
+metadata/_custom_type_script = "uid://cjbewc56q44uu"
+
+[sub_resource type="Resource" id="Resource_dgbef"]
+script = ExtResource("5_hm723")
+effects = Array[ExtResource("2_s81im")]([SubResource("Resource_8u4ql")])
+conditions = Array[ExtResource("3_rxpfe")]([SubResource("Resource_qf30v")])
+metadata/_custom_type_script = "uid://tbls6c5sbjq1"
+
+[resource]
+script = ExtResource("1_lqal6")
+tile_name = "River"
+tile_description = "+15 Points if connected to exactly two Aquatic tiles"
+tile_type = 0
+tile_color = Color(0.321569, 0.694118, 1, 1)
+tags = Array[int]([1])
+tile_effects = Array[ExtResource("2_s81im")]([SubResource("Resource_dgbef")])
+metadata/_custom_type_script = "uid://c6xhn0d50s36v"

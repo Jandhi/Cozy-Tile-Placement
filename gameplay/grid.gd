@@ -2,7 +2,7 @@ class_name Grid extends Node2D
 
 signal preview_moved(tile : Tile)
 signal preview_removed()
-signal preview_placed(tile : Tile)
+signal tile_placed(tile : Tile)
 
 @export var width : int
 @export var height : int
@@ -90,8 +90,24 @@ func place_preview():
 	elif preview_tile.tile_info.tile_type == TileInfo.Tiletype.DENIZEN:
 		denizen_tiles[preview_tile.tile_position] = preview_tile
 	
-	preview_placed.emit(preview_tile)
+	tile_placed.emit(preview_tile)
 	preview_tile = null
+
+func place_tile(tile_position : Vector2i, tile_info : TileInfo):
+	var tile : Tile = tile_prototype.instantiate()
+	self.add_child(tile)
+	tile.set_tile(tile_info)
+	tile.tile_position = tile_position
+	tile.position = get_tile_position(tile_position)
+
+	if tile_info.tile_type == TileInfo.Tiletype.TERRAIN:
+		terrain_tiles[tile_position] = tile
+	elif tile_info.tile_type == TileInfo.Tiletype.BUILDING:
+		building_tiles[tile_position] = tile
+	elif tile_info.tile_type == TileInfo.Tiletype.DENIZEN:
+		denizen_tiles[tile_position] = tile
+
+	tile_placed.emit(tile)
 
 func can_place_preview():
 	if preview_tile.tile_info.tile_type == TileInfo.Tiletype.TERRAIN:
@@ -161,7 +177,7 @@ func get_all_tiles() -> Array[Tile]:
 func get_surrounding_indices(index : Vector2i, distance : int) -> Array:
 	var result = []
 	var stack = []
-	var visited = { index:  true}
+	var visited = {index: true}
 
 	for neighbour in self.get_neighbour_indices(index):
 		stack.append([neighbour, 1])

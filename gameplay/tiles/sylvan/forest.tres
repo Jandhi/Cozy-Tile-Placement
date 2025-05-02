@@ -3,20 +3,21 @@
 [ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="1_8pwyy"]
 [ext_resource type="Script" uid="uid://cy35gou2xjhkq" path="res://gameplay/tile_effect/tile_effect.gd" id="2_h3vx3"]
 [ext_resource type="Script" uid="uid://bboqg0gxp6wol" path="res://gameplay/tile_effect/flood_fill_effect.gd" id="3_m7nol"]
-[ext_resource type="Script" path="res://gameplay/tile_effect/tile_filter.gd" id="4_d34yq"]
+[ext_resource type="Script" uid="uid://i43vgwxmw3fp" path="res://gameplay/tile_effect/filter/basic_filter.gd" id="4_bseo5"]
 [ext_resource type="Script" uid="uid://cjbewc56q44uu" path="res://gameplay/tile_effect/placement_bonus.gd" id="5_d34yq"]
 
-[sub_resource type="Resource" id="Resource_cy6cq"]
-script = ExtResource("4_d34yq")
+[sub_resource type="Resource" id="Resource_1828k"]
+script = ExtResource("4_bseo5")
 required_name = ""
 excluded_name = ""
 required_tags = Array[int]([0])
 excluded_tags = Array[int]([])
+metadata/_custom_type_script = "uid://i43vgwxmw3fp"
 
 [sub_resource type="Resource" id="Resource_61e7q"]
 script = ExtResource("3_m7nol")
 points = 1
-tile_filter = SubResource("Resource_cy6cq")
+tile_filter = SubResource("Resource_1828k")
 metadata/_custom_type_script = "uid://bboqg0gxp6wol"
 
 [sub_resource type="Resource" id="Resource_qpct5"]

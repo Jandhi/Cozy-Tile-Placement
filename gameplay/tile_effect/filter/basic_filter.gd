@@ -1,4 +1,4 @@
-class_name TileFilter extends Resource
+class_name BasicFilter extends TileFilter
 
 @export var required_name : String
 @export var excluded_name : String

@@ -13,7 +13,8 @@ func load_all_tiles():
 	for path in tile_paths:
 		var tile_info = load(path)
 
-		assert(tile_info is TileInfo, "Loaded resource is not a TileInfo")
+		if tile_info is not TileInfo:
+			continue
 
 		tiles.append(tile_info)
 		

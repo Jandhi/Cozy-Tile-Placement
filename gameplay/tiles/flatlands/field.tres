@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TileInfo" load_steps=3 format=3 uid="uid://dlvx5yyv2w6gg"]
+
+[ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="1_tbv12"]
+[ext_resource type="Script" uid="uid://cy35gou2xjhkq" path="res://gameplay/tile_effect/tile_effect.gd" id="2_v3w1w"]
+
+[resource]
+script = ExtResource("1_tbv12")
+tile_name = ""
+tile_description = ""
+tile_type = 0
+tile_color = Color(0, 0, 0, 1)
+tags = Array[int]([])
+tile_effects = Array[ExtResource("2_v3w1w")]([])
+metadata/_custom_type_script = "uid://c6xhn0d50s36v"

@@ -5,7 +5,7 @@ class_name FloodFillEffect extends TileEffect
 
 func on_placement(tile : Tile, _neighbours : Array[Tile], grid : Grid, game_state : GameState):
 	var queue : Array[Vector2i] = [tile.tile_position]
-	var visited : Array[Vector2i] = [tile.tile_position]
+	var visited : Dictionary[Vector2i, bool] = {tile.tile_position : true}
 	var count : int = 0
 
 	while queue.size() > 0:
@@ -13,10 +13,10 @@ func on_placement(tile : Tile, _neighbours : Array[Tile], grid : Grid, game_stat
 
 		var neighbours : Array[Tile] = grid.get_neighbours(current)
 		for neighbour in neighbours:
-			if neighbour.tile_position in visited:
+			if visited.has(neighbour.tile_position):
 				continue
 
-			visited.append(neighbour.tile_position)
+			visited[neighbour.tile_position] = true
 
 			if not tile_filter.fits(neighbour):
 				continue

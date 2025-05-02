@@ -10,9 +10,9 @@ enum ComparisonType {
 @export var comparison_type : ComparisonType 
 @export var tile_filter : TileFilter
 
-func evaluate(_tile, neighbours : Array[TileInfo], _grid, _game_state : GameState) -> bool:
+func evaluate(_tile : Tile, neighbours : Array[Tile], _grid, _game_state : GameState) -> bool:
 	var count = neighbours.filter(tile_filter.fits).size()
-	
+
 	match comparison_type:
 		ComparisonType.Equals:
 			return count == amount

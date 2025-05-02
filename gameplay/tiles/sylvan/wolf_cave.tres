@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TileInfo" load_steps=3 format=3 uid="uid://b0u66u3uxmvyu"]
+
+[ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="1_www22"]
+[ext_resource type="Script" uid="uid://cy35gou2xjhkq" path="res://gameplay/tile_effect/tile_effect.gd" id="2_83q78"]
+
+[resource]
+script = ExtResource("1_www22")
+tile_name = "Wolf Cave"
+tile_description = "[b]Spawns[/b] a Wolf"
+tile_type = 0
+tile_color = Color(0.214703, 0.214703, 0.214703, 1)
+tags = Array[int]([0, 2])
+tile_effects = Array[ExtResource("2_83q78")]([])
+metadata/_custom_type_script = "uid://c6xhn0d50s36v"

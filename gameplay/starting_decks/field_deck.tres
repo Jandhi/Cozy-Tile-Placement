@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StartingDeck" load_steps=3 format=3 uid="uid://dhrd4bgs1h7j7"]
+
+[ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="1_wudld"]
+[ext_resource type="Script" uid="uid://cfajh3ffmi1ke" path="res://gameplay/starting_decks/starting_deck.gd" id="2_nlaso"]
+
+[resource]
+script = ExtResource("2_nlaso")
+deck_name = "Field Deck"
+deck_description = "Something with fields idk"
+cards = Dictionary[ExtResource("1_wudld"), int]({})
+metadata/_custom_type_script = "uid://cfajh3ffmi1ke"

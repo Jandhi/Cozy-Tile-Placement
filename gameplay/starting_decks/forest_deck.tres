@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StartingDeck" load_steps=5 format=3 uid="uid://chw7jyi7frlg7"]
+
+[ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="1_61v8j"]
+[ext_resource type="Resource" uid="uid://bdqwm12us64pt" path="res://gameplay/tiles/sylvan/forest.tres" id="2_7e5ea"]
+[ext_resource type="Script" uid="uid://cfajh3ffmi1ke" path="res://gameplay/starting_decks/starting_deck.gd" id="2_itwcm"]
+[ext_resource type="Resource" uid="uid://b0u66u3uxmvyu" path="res://gameplay/tiles/sylvan/wolf_cave.tres" id="3_7e5ea"]
+
+[resource]
+script = ExtResource("2_itwcm")
+deck_name = "Forest Deck"
+deck_description = ""
+cards = Dictionary[ExtResource("1_61v8j"), int]({
+ExtResource("2_7e5ea"): 5,
+ExtResource("3_7e5ea"): 1
+})
+metadata/_custom_type_script = "uid://cfajh3ffmi1ke"

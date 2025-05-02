@@ -1,13 +1,10 @@
 extends Control
 
-@export var game_prefab : PackedScene
+@export var deck_selection : PackedScene
 
 func _on_play_button_pressed():
 	# Start the game
-	print("Play button pressed")
 
-	var game_instance = game_prefab.instantiate()
-	get_tree().root.add_child(game_instance)
-	var game_manager = game_instance.get_node("GameManager")
-	game_manager.start_game()
+	var deck_selection_instance = deck_selection.instantiate()
+	get_tree().root.add_child(deck_selection_instance)
 	queue_free()

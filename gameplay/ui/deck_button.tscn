@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://du6yq0p1w3gd1"]
+
+[ext_resource type="Script" uid="uid://ctxjad5eya7xa" path="res://gameplay/ui/deck_button.gd" id="1_ty7l7"]
+
+[node name="Control" type="Panel" node_paths=PackedStringArray("title", "description")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ty7l7")
+title = NodePath("VBoxContainer/Title")
+description = NodePath("VBoxContainer/HBoxContainer/Description")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center][b]Deck Name Here"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LeftBuffer" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Description" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "This is the description"
+fit_content = true
+
+[node name="RightBuffer" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -420.0
+offset_right = 49.0
+offset_bottom = -365.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Select"
+
+[connection signal="pressed" from="Button" to="." method="selected"]

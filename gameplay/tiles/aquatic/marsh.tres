@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="TileInfo" load_steps=11 format=3 uid="uid://b0lbhympm10i2"]
+
+[ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="1_fap2s"]
+[ext_resource type="Script" uid="uid://cy35gou2xjhkq" path="res://gameplay/tile_effect/tile_effect.gd" id="2_nk52n"]
+[ext_resource type="Script" uid="uid://d1ppatki70t7h" path="res://gameplay/tile_effect/neighbor_bonus.gd" id="3_nk52n"]
+[ext_resource type="Script" uid="uid://1pgtsqxx56eg" path="res://gameplay/tile_effect/filter/tile_filter.gd" id="4_jp5xw"]
+[ext_resource type="Script" uid="uid://i43vgwxmw3fp" path="res://gameplay/tile_effect/filter/basic_filter.gd" id="5_y1vve"]
+[ext_resource type="Script" uid="uid://2efewsh35jhu" path="res://gameplay/tile_effect/filter/multi_filter.gd" id="6_o2usl"]
+
+[sub_resource type="Resource" id="Resource_kh0fy"]
+script = ExtResource("5_y1vve")
+required_name = ""
+excluded_name = ""
+required_tags = Array[int]([2])
+excluded_tags = Array[int]([])
+metadata/_custom_type_script = "uid://i43vgwxmw3fp"
+
+[sub_resource type="Resource" id="Resource_65xui"]
+script = ExtResource("5_y1vve")
+required_name = ""
+excluded_name = ""
+required_tags = Array[int]([1])
+excluded_tags = Array[int]([])
+metadata/_custom_type_script = "uid://i43vgwxmw3fp"
+
+[sub_resource type="Resource" id="Resource_mxgxn"]
+script = ExtResource("6_o2usl")
+filters = Array[ExtResource("4_jp5xw")]([SubResource("Resource_kh0fy"), SubResource("Resource_65xui")])
+metadata/_custom_type_script = "uid://2efewsh35jhu"
+
+[sub_resource type="Resource" id="Resource_66dle"]
+script = ExtResource("3_nk52n")
+points = 5
+tile_filter = SubResource("Resource_mxgxn")
+metadata/_custom_type_script = "uid://d1ppatki70t7h"
+
+[resource]
+script = ExtResource("1_fap2s")
+tile_name = ""
+tile_description = ""
+tile_type = 0
+tile_color = Color(0, 0, 0, 1)
+tags = Array[int]([1, 2])
+tile_effects = Array[ExtResource("2_nk52n")]([SubResource("Resource_66dle")])
+metadata/_custom_type_script = "uid://c6xhn0d50s36v"

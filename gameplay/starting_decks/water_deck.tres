@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StartingDeck" load_steps=5 format=3 uid="uid://bpqli70tvtdy0"]
+
+[ext_resource type="Script" uid="uid://c6xhn0d50s36v" path="res://gameplay/tile_info.gd" id="1_p1j5v"]
+[ext_resource type="Script" uid="uid://cfajh3ffmi1ke" path="res://gameplay/starting_decks/starting_deck.gd" id="2_8aq3p"]
+[ext_resource type="Resource" uid="uid://d4llk4as7ra2w" path="res://gameplay/tiles/aquatic/lake.tres" id="2_svllt"]
+[ext_resource type="Resource" uid="uid://1phibvi3j0ga" path="res://gameplay/tiles/aquatic/river.tres" id="3_5wwjh"]
+
+[resource]
+script = ExtResource("2_8aq3p")
+deck_name = "Water Deck"
+deck_description = "Water water water"
+cards = Dictionary[ExtResource("1_p1j5v"), int]({
+ExtResource("2_svllt"): 5,
+ExtResource("3_5wwjh"): 5
+})
+metadata/_custom_type_script = "uid://cfajh3ffmi1ke"

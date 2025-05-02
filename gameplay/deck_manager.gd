@@ -26,6 +26,15 @@ func add_test_card():
 	deck.append(info)
 	draw_pile.append(info)
 	discard_count_changed.emit(discard_pile.size())
+
+func set_deck(new_deck : Array[CardInfo]):
+	deck = new_deck
+	draw_pile = deck.duplicate()
+	draw_pile.shuffle()
+	discard_pile = []
+
+	draw_pile_count_changed.emit(draw_pile.size())
+	discard_count_changed.emit(discard_pile.size())
 	
 func add_card_to_discard(card : Card):
 	discard_pile.append(card.card_info)
